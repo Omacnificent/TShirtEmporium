@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    ApplicationDbContext db = new ApplicationDbContext();
+    string newNum = Request.Params["unum"];
+    int num = 0;
+    bool res = int.TryParse(newNum, out num);
+    var oResult = (from o in db.Orders where num == o.OrderNum select o);
+    var oCount = oResult.Count();
+    ViewBag.OCount = oCount;
+    <div id="cd-cart-trigger">
+        <a class="cd-img-replace" href="#0">Cart</a>
+        <span class="cartNum">@ViewBag.OCount</span>
+    </div>
+}
+else
+{
+
+}

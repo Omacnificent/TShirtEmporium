@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- <script src="~/Scripts/pace.js"></script> -->
+    <!-- <link href="~/Content/preload-angle-theme.css" rel="stylesheet" /> -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/tabs/component.css" rel="stylesheet" />
+    <link href="~/Content/ucontent/bootstrap.min.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body
+        {
+            background: url('../../Content/img/teebg.jpg') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        #noIE
+        {
+            display:none\9;
+        }
+
+        .ie10 .myContainer
+        {
+            display:block;
+        }
+
+        @@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            #noIE { display:block !important; }
+        }
+
+        .myalert
+        {
+            padding: 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            position:relative;
+            top:10em;
+            margin:0 auto 0 auto;
+            width:60%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo"><h1 class="title" style="margin:0;">Tee Shirt Emporium</h1></div>
+        <div id="cd-hamburger-menu"><a class="cd-img-replace" href="#0">Menu</a></div>
+        @Html.Partial("_CartPartial")
+        <nav id="main-nav">
+            @Html.Partial("_CLoginPartial")
+        </nav>
+    </header>
+
+    <!--[if lte IE 10]>
+            <p class="myalert alert-info">It seems you are using an outdated browser and this may cause issues when using this website.<br />
+        We reccomend upgrade your version of Internet Explorer or access this site from chrome, firefox or a smart mobile device.</p>
+    <![endif]-->
+
+    <div class="myContainer">
+        @if (ViewBag.Success != null)
+        {
+            <p class="alert alert-success">@ViewBag.Success<br /></p>
+        }
+
+        @if (ViewBag.Warning != null)
+        {
+            <p class="alert alert-warning">@ViewBag.Warning<br /></p>
+        }
+
+        @if (ViewBag.Error != null)
+        {
+            <p class="alert alert-danger">@ViewBag.Error<br /></p>
+        }
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/uscripts")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/main.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".alert").fadeIn().delay(3000).fadeOut(1000);
+        });
+    </script>
+
+</body>
+</html>
+

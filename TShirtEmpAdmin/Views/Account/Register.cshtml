@@ -1,0 +1,100 @@
+﻿@model TShirtEmpAdmin.Models.RegisterViewModel
+@using reCAPTCHA.MVC 
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@if (ViewBag.Message != null)
+{
+    <p class="alert alert-warning">@ViewBag.Message<br /></p>
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <hr />
+
+    
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Example: ObiWilliams", @reqired = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "Your First Name", @reqired = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Your Last Name", @reqired = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Department, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Department, new { @class = "form-control", @placeholder = "Your Department Name", @reqired = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10"> 
+            @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control numOnly", @placeholder = "Numbers only include zip", @reqired = "required", @maxlength = "10" })<span id="errmsg"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EmployeeId, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @placeholder = "Employee ID", @reqired = "required", @maxlength="8" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Your Email Address", @reqired = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Your Password", @reqired = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Type Password again", @reqired = "required" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Select Your User Type", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("Name")
+            @ViewBag.Reg
+        </div>
+    </div>
+    <div class="form-group" style="margin-left:3.5%;">
+        @Html.Recaptcha()
+        <div class="col-md-10">
+            @Html.ValidationMessage("ReCaptcha")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TShirtEmpAdmin.Models.Order>
+
+<h2>Cart</h2>
+<div class="alert-warning" style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px;">
+    <p>By clicking the “Check Out” button, I agree:</p>
+    <ul>
+        <li>To have the total cost of the shirt(s) purchased deducted from one pay at the time I place my order.</li>
+        <li>To pick up my merchandise within 30 days of availability. After 30 days, I authorize King’s Daughters to donate my merchandise to
+            a local charity and, should this occur, there will be no refund.</li>
+    </ul>
+</div>
+<style>
+    ul.cd-cart-items {
+        list-style-type:none;
+    }
+</style>
+<ul class="cd-cart-items">
+    @foreach (var item in Model)
+    {
+        <img style="width:10%; margin:2% 2% 0 0; float:left;" src="/File?id=@item.FileId" />
+        <li>            
+            <span class="cd-qty">@Html.DisplayFor(modelItem => item.OShirtQuantity) - @Html.DisplayFor(modelItem => item.OShirtSize)</span>
+            @Html.DisplayFor(modelItem => item.ShirtCause)  Tee
+            <div class="cd-price">@Html.DisplayFor(modelItem => item.Total)</div>
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "cd-item-remove cd-img-replace" })
+            <span style="clear:both;">&nbsp;</span>
+        </li>
+    }
+</ul> <!-- cd-cart-items -->
+<div class="cd-cart-total">
+    Total: $@ViewBag.Total
+</div> <!-- cd-cart-total -->
+@Html.ActionLink("Continue Shopping", "Index", "Shirts", new { @unum = ViewBag.LogNum }, new { @class = "placeOrder-btn" })
+@if (ViewBag.OCount < 1)
+{
+    <div class="checkout-btn">Check Out</div>
+}
+else
+{
+    @Html.ActionLink("Check Out", "Checkout", new { unum = ViewBag.Data }, htmlAttributes: new { @class = "checkout-btn" })<br />
+    
+}
+<div style="clear:both;">&nbsp;</div>

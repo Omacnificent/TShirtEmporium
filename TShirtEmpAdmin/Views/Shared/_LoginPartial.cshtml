@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()    
+   
+        string newNum = Request.Params["unum"];
+        ViewBag.LogNum = newNum;
+        var id = 0; 
+
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Orders and Shirt Options<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Manage Orders", "Index", "ManageOrders", new { @unum = ViewBag.LogNum }, null)</li>
+                <li role="separator" class="divider"></li>
+                <li>@Html.ActionLink("Manage Shirts", "ShirtList", "Shirts", new { @unum = ViewBag.LogNum }, null)</li>
+                <li>@Html.ActionLink("Manage Shirt Sizes", "Index", "ShirtSizes", new { @unum = ViewBag.LogNum }, null)</li>
+                <li>@Html.ActionLink("Manage Shirt Quantities", "Index", "ShirtQuantities", new { @unum = ViewBag.LogNum }, null)</li>
+                <li>@Html.ActionLink("Manage Delivery Options", "Index", "DeliveryOptions", new { @unum = ViewBag.LogNum }, null)</li>
+                <li>@Html.ActionLink("Change Shirt Upcharge", "Index", "Markups", new { @unum = ViewBag.LogNum }, null)</li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.GetUserName() <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Manage Users", "Index", "User", new { @unum = ViewBag.LogNum }, null)</li>
+                <li>@Html.ActionLink("Remove Duplicate Users", "Duplicates", "User", new { @unum = ViewBag.LogNum }, null)</li>
+                <li role="separator" class="divider"></li>
+                <li>@Html.ActionLink("Manage Roles", "Index", "Role", new { @unum = ViewBag.LogNum }, null)</li>
+                <li role="separator" class="divider"></li>
+                <li>@Html.ActionLink("Manage User Roles", "GetRoles", "Role", new { @unum = ViewBag.LogNum }, null)</li>
+                <li>@Html.ActionLink("Add User Role", "ManageUserRoles", "Role", new { @unum = ViewBag.LogNum }, null)</li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>
+        </li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "UserLogin", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

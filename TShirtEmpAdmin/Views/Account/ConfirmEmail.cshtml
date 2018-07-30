@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.TabTitle = "Confirm Email";
+    Layout = "~/Views/Shared/_CLayout.cshtml";
+}
+
+<section id="section-1" style="text-align:center;">
+    @if (Request.IsAuthenticated) {
+        <h2>
+            Thank you for confirming your email. Please @Html.ActionLink("click here to go back.", "FindMe", "Account")
+        </h2>
+    }
+    @if (!Request.IsAuthenticated)
+    {
+        <h2>
+            Thank you for confirming your email. Please @Html.ActionLink("click here to log in.", "UserLogin", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </h2>
+    }
+</section>

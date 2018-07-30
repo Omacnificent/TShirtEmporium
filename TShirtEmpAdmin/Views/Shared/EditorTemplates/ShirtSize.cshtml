@@ -1,0 +1,22 @@
+﻿@model TShirtEmpAdmin.Models.ShirtSize
+<style>
+    ul.size-list {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 4;
+        list-style-type: none;
+    }
+
+    label.size-Li {
+        font-weight: bold;
+    }
+</style>
+<div>
+    <ul class="size-list">
+        <li>
+            @Html.CheckBoxFor(p => p.IsSelected)
+            @Html.DisplayFor(p => p.Name)
+            @Html.HiddenFor(p => p.Id)
+        </li>
+    </ul>
+</div>

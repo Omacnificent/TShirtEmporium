@@ -1,0 +1,38 @@
+﻿@model TShirtEmpAdmin.ViewModels.ShirtsToSizesViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    ul.size-list {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 4;
+        list-style-type: none;
+    }
+
+    label.size-Li {
+        font-weight: bold;
+    }
+</style>
+<h3>Select Shirt Sizes for @ViewBag.ShirtName</h3>
+
+@using (Html.BeginForm())
+{
+    <div style="width:100%">
+        <div style="float:left;">
+            <img style="width:80%; margin-right:10px" src="/File/?id=@ViewBag.FileName" />
+        </div>
+        <div style="float:left;">
+            @Html.EditorFor(p => Model.ShirtSizes)
+        </div>
+
+        <div style="clear:both;">
+            @Html.ActionLink("Back to List", "ShirtList", "Shirts")
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+}
+<div style="clear:both;">
+    &nbsp;
+</div>

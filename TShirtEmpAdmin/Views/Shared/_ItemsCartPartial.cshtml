@@ -1,0 +1,20 @@
+﻿@model IEnumerable<TShirtEmpAdmin.Models.Order>
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <h2>Cart</h2>
+    <ul class="cd-cart-items">
+        @foreach (var item in Model) {
+            <li>
+                <span class="cd-qty">@Html.DisplayFor(modelItem => item.OShirtQuantity)x</span> 
+                @Html.DisplayFor(modelItem => item.ShirtCause) Tee
+                <div class="cd-price">@Html.DisplayFor(modelItem => item.Total)</div>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "cd-item-remove cd-img-replace" })
+            </li>
+        }
+        </ul> <!-- cd-cart-items -->
+    <div class="cd-cart-total">
+        <p>Total <span>$39.96</span></p>
+    </div> <!-- cd-cart-total -->
+    <a href="#0" class="checkout-btn">Checkout</a>
+}

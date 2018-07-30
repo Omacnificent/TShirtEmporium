@@ -1,0 +1,7 @@
+﻿@model PagedList.IPagedList<TShirtEmpAdmin.Models.Order>
+@using PagedList.Mvc;
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, Name = ViewBag.shirtName, currentFilter = ViewBag.CurrentFilter}))

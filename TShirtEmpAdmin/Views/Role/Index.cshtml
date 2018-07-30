@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Available Users For Application</h2>
+@Html.ActionLink("Create New Role", "Create", "Role")
+
+@if (ViewBag.Success != null)
+{
+    <p class="alert alert-success">@ViewBag.Success<br /></p>
+}
+
+@if (ViewBag.Warning != null)
+{
+    <p class="alert alert-warning">@ViewBag.Warning<br /></p>
+}
+<table class="table">
+    <tr>
+        <th>
+            All Roles
+        </th>
+        <th>
+            Delete Role?
+        </th>
+        <th>
+            Edit Role?
+        </th>
+    </tr>
+
+    @foreach (var role in Model)
+    {
+        <tr>
+            <td>
+                @role.Name
+            </td>
+            <td>
+                <a onclick="return confirm('Are you sure to delete?')" href="/Role/Delete?RoleName=@role.Name" class="delLink" style="color: red;">Delete</a>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { roleName = @role.Name })
+            </td>
+        </tr>
+    }
+
+</table>

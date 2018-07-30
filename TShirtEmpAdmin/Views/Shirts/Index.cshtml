@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TShirtEmpAdmin.Models.Shirt>
+@{
+    ViewBag.Title = "Index";
+    
+    Layout = "~/Views/Shared/_CLayout.cshtml";
+}
+<style>
+    ul.products {
+        list-style-type: none;
+        width: 100%;
+    }
+
+    h3 {
+        font: bold;
+    }
+
+    li.pr img {
+        float: left;
+        margin: 0 15px 0 0;
+    }
+
+    li.pr {
+        padding: 10px;
+        overflow: auto;
+    }
+
+        li.pr:hover {
+            background: #eee;
+            cursor: default;
+        }
+
+    .mediaboxl {
+        float: left;
+        width: 20%;
+        padding: 0 25px;
+    }
+
+    .mediaboxr {
+        float: left;
+        width: 53%;
+        padding: 0 25px;
+    }
+</style>
+<div class="mediaboxl">
+    &nbsp;
+</div>
+
+<div class="mediaboxr">
+    @foreach (var item in Model)
+    {
+
+        <ul class="products">
+            <li class="pr">
+                <img style="width:150px; margin-top:20px;" src="/File/?id=@item.Files.First(f => f.FileType == FileType.TShirt).FileId" />
+                <h3>@Html.ActionLink(item.ShirtCause, "Index", "Orders", new { shirtId = item.Id, @unum = ViewBag.LogNum }, null)</h3>
+                <p>@Html.DisplayFor(modelItem => item.Caption)</p>
+                <h4>$@Html.DisplayFor(modelItem => item.Price)</h4>
+            </li>
+        </ul>
+        <hr />
+    }
+</div>
+

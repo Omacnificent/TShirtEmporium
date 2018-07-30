@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "AddRoleToUser";
+}
+
+<h2>Add Role To User</h2>
+@if (ViewBag.ResultMessage != null)
+{
+    <p class="alert alert-success">@ViewBag.ResultMessage<br /></p>
+}
+
+@using (Html.BeginForm("RoleAddToUser", "Role"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        Username : @Html.TextBox("UserName")
+        Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")
+
+    </p>
+
+    <input type="submit" value="Save" />
+}
+

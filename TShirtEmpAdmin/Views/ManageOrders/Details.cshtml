@@ -1,0 +1,149 @@
+﻿@model TShirtEmpAdmin.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+
+    string newNum = Request.Params["odn"];
+    ViewBag.LogNum = newNum;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShirtCause)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShirtCause)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OShirtSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OShirtSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OShirtQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OShirtQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ODeliveryOption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ODeliveryOption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShirtYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShirtYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderNum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderNum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderCompleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderCompleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecievedShirt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecievedShirt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a href="~/ManageOrders/Find/@ViewBag.LogNum">Back To Order</a>
+</p>

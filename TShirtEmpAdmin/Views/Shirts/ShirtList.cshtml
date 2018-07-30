@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TShirtEmpAdmin.Models.Shirt>
+
+@{
+    string newNum = Request.Params["unum"];
+    ViewBag.LogNum = newNum;
+    var id = 0;
+}
+
+<h2>Manage Shirts</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TabName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShirtCause)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Caption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpsizeCharge)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TabName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShirtCause)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Caption)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiteActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpsizeCharge)
+        </td>
+        <td>
+            @Html.ActionLink("Active/Inactive", "ToggleActive", new { id = item.Id }) |
+            @Html.ActionLink("UpCharge On/Off", "ToggleUpCharge", new { id = item.Id }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id, @unum = ViewBag.LogNum }) |
+            @Html.ActionLink("Select Shirt Sizes", "Index", "ShirtToSizes", new { shirtId = item.Id }, null)
+        </td>
+    </tr>
+}
+
+</table>
+@ViewBag.Count

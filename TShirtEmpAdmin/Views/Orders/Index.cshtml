@@ -1,0 +1,131 @@
+﻿@model TShirtEmpAdmin.ViewModels.ShirtOrdersViewModel
+
+@{
+    string myShirtId = Request.Params["shirtId"];
+    ViewBag.ShirtId = myShirtId;
+    Layout = "~/Views/Shared/_CLayout.cshtml";
+}
+
+
+<section id="section-1">
+    <div class="mediabox">
+        @if (ViewBag.Confirm == "false")
+        {
+
+            <p class="alert-warning" style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px;">
+                Before you make your purchase, you must @Html.ActionLink("click here to confirm your email address", "SendConfirmationEmail", "Account",
+                new { userID = ViewBag.Id, subject = ViewBag.Subject }, null)
+            </p>
+        }
+
+        @if (Model.Files.Any(f => f.FileType == FileType.TShirt))
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            var nCurrentShirt = (from cs in db.Shirts where cs.Id == Model.ShirtId select cs.Id).First();
+            int CurrentShirt = nCurrentShirt;
+            <p>
+                <img style="max-width:350px" src="~/File?id=@Model.Files.Where(f => f.FileType == FileType.TShirt && f.ShirtId == CurrentShirt).First().FileId" alt="teeshirt" />
+            </p>
+        }
+
+    </div>
+    <div class="mediabox">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p class="fieldset">
+                @ViewBag.TabContent
+            </p>
+
+            if (ViewBag.Available == 1)
+            {
+                <p class="fieldset">
+                    <b>Size:</b><br />
+                    @Html.DropDownListFor(model => model.ShirtSizeId, (SelectList)ViewBag.ShirtSizeId, htmlAttributes: new { @class = "form-control", @id = "size", @onchange = "fill()" })
+                </p>
+                <p class="fieldset">
+                    <b>How Many:</b><br />
+                    @Html.DropDownListFor(model => model.ShirtQuantityId, (SelectList)ViewBag.ShirtQuantityId, htmlAttributes: new { @class = "form-control", @id = "quantity", @onchange = "fill()" })
+                </p>
+                <p class="fieldset">
+                    <b>I Would Like To:</b><br />
+                    @Html.DropDownListFor(model => model.DeliveryOptionId, (SelectList)ViewBag.DeliveryOptionsId, htmlAttributes: new { @class = "form-control" })
+                </p>
+                <p class="fieldset">
+                    <b>Total: </b>
+                    <span style="color:green; font-weight:bold;" id="total">$@ViewBag.OTabPrice</span>
+                    @ViewBag.Data
+                </p>
+                <p class="fieldset">
+                    @Html.ActionLink("Continue Shopping", "Index", "Shirts", new { @unum = ViewBag.LogNum }, new { @class = "btn btn-primary" })
+
+                    @if ((ViewBag.Confirm == "false") || (ViewBag.SizeCount < 1))
+                    {
+                        <input type="submit" value="Add To Cart" class="btn btn-success" disabled="disabled" />
+                    }
+                    else
+                    {
+                        <input type="submit" value="Add To Cart" class="btn btn-success" />
+                    }
+                </p>
+            }
+            else
+            {
+                <p class="alert-danger" style="padding: 15px; text-align:center; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; font-weight:bold">
+                    Out of Stock
+                </p>
+
+                <p class="fieldset">
+                    @Html.ActionLink("Continue Shopping", "Index", "Shirts", new { @unum = ViewBag.LogNum }, new { @class = "btn btn-primary" })        
+                </p>
+            }
+        }
+    </div>
+    <div class="mediabox">
+        @if (User.IsInRole("Administrators") || User.IsInRole("Home Medical") || User.IsInRole("Payroll"))
+        {
+            <p class="alert-info" style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; font-weight:bold">
+                @Html.ActionLink("Export Orders", "Export", "Orders", new { @shirtId = ViewBag.ShirtId }, null)
+            </p>
+        }
+
+        <p class="alert-info" style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px;">
+            <strong><u>Please Note:</u></strong> Delivery is available only to our regional sites. All others must pick up t-shirts on the designated pick up day
+            (will be announced on the blog) or at KD Home Medical Ashland or KD Home Medical Portsmouth.
+        </p>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    function fill() {
+        var size = document.getElementById("size").options[document.getElementById("size").selectedIndex].text;
+        var multi = document.getElementById("quantity").value;
+        var txt2 = @ViewBag.TabPrice;
+        var upsize = @ViewBag.Upcharge;
+        var tax = 0.06;
+        var baseprice = 0.00;
+        if ((size == "Small") || (size == "Medium") || (size == "Large"))
+        {
+            baseprice = txt2;
+        }
+        else
+        {
+            baseprice = txt2 + upsize;
+        }
+
+        var taxtotal = baseprice * tax;
+        var total = baseprice + taxtotal;
+        var myTotal = total * multi;
+
+        document.getElementById("total").innerHTML ='$' + (myTotal).toFixed(2);
+        console.log(baseprice);
+    }
+</script>

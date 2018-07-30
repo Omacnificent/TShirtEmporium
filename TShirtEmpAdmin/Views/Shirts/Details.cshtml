@@ -1,0 +1,77 @@
+﻿@model TShirtEmpAdmin.Models.Shirt
+
+@{
+    string newNum = Request.Params["unum"];
+    ViewBag.LogNum = newNum;
+    var id = 0;
+}
+
+<h2>Preview</h2>
+
+<div>
+    <h4>Shirt</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @if (Model.Files.Any(f => f.FileType == FileType.TShirt))
+        {
+            <dt>
+                T-shirt Photo
+            </dt>
+            <dd>
+                <img style="max-width:350px" src="~/File?id=@Model.Files.First(f => f.FileType == FileType.TShirt).FileId" alt="tshirt" />
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.TabName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TabName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShirtCause)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShirtCause)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Caption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Caption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiteActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpsizeCharge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpsizeCharge)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id, @unum = ViewBag.LogNum }) |
+    @Html.ActionLink("Back to List", "ShirtList", new { @unum = ViewBag.LogNum })
+</p>

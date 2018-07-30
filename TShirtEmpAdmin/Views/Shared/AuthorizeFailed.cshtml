@@ -1,0 +1,20 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.TabTitle = "An Error Has Occured";
+    Layout = "~/Views/Shared/_CLayout.cshtml";
+}
+<section id="section-1" style="text-align:center;">
+    @if (Request.IsAuthenticated)
+    {
+        <h2 class="text-danger">
+            An error occurred while processing your request. Please @Html.ActionLink("Click here to continue.", "FindMe", "Account")
+        </h2>
+    }
+    @if (!Request.IsAuthenticated)
+    {
+        <h2 class="text-danger">
+            An error occurred while processing your request. Please @Html.ActionLink("Click here to log in.", "UserLogin", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </h2>
+    }
+</section>

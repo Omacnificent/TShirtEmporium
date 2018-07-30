@@ -1,0 +1,661 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{849F7C1D-CAF4-49B1-830B-D1857F54FA9C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TShirtEmpAdmin</RootNamespace>
+    <AssemblyName>TShirtEmpAdmin</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="reCAPTCHA.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\reCAPTCH.MVC.1.0.1\lib\net45\reCAPTCHA.MVC.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DeliveryOptionsController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\LogUserInfoesController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManageOrdersController.cs" />
+    <Compile Include="Controllers\MarkupsController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\ShirtQuantitiesController.cs" />
+    <Compile Include="Controllers\ShirtsController.cs" />
+    <Compile Include="Controllers\ShirtSizesController.cs" />
+    <Compile Include="Controllers\ShirtToSizesController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="CustomFilters\AuthLogAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612012139286_InitialMigration.cs" />
+    <Compile Include="Migrations\201612012139286_InitialMigration.Designer.cs">
+      <DependentUpon>201612012139286_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612081604530_LogUserInfo.cs" />
+    <Compile Include="Migrations\201612081604530_LogUserInfo.Designer.cs">
+      <DependentUpon>201612081604530_LogUserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612081614540_LogUserInfo1.cs" />
+    <Compile Include="Migrations\201612081614540_LogUserInfo1.Designer.cs">
+      <DependentUpon>201612081614540_LogUserInfo1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701101735404_ShirtSize.cs" />
+    <Compile Include="Migrations\201701101735404_ShirtSize.Designer.cs">
+      <DependentUpon>201701101735404_ShirtSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701101924086_Shirts.cs" />
+    <Compile Include="Migrations\201701101924086_Shirts.Designer.cs">
+      <DependentUpon>201701101924086_Shirts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701101926051_Files.cs" />
+    <Compile Include="Migrations\201701101926051_Files.Designer.cs">
+      <DependentUpon>201701101926051_Files.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701161425522_ShirtQuantity.cs" />
+    <Compile Include="Migrations\201701161425522_ShirtQuantity.Designer.cs">
+      <DependentUpon>201701161425522_ShirtQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701161430008_ChangeShirtQuantityToInt.cs" />
+    <Compile Include="Migrations\201701161430008_ChangeShirtQuantityToInt.Designer.cs">
+      <DependentUpon>201701161430008_ChangeShirtQuantityToInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701171605323_AddOrdersModel.cs" />
+    <Compile Include="Migrations\201701171605323_AddOrdersModel.Designer.cs">
+      <DependentUpon>201701171605323_AddOrdersModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701192308404_AddEmpId.cs" />
+    <Compile Include="Migrations\201701192308404_AddEmpId.Designer.cs">
+      <DependentUpon>201701192308404_AddEmpId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701231519018_ChangeOrderClass.cs" />
+    <Compile Include="Migrations\201701231519018_ChangeOrderClass.Designer.cs">
+      <DependentUpon>201701231519018_ChangeOrderClass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701250302447_UserLog.cs" />
+    <Compile Include="Migrations\201701250302447_UserLog.Designer.cs">
+      <DependentUpon>201701250302447_UserLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701271844441_OrderSizeandQuantity.cs" />
+    <Compile Include="Migrations\201701271844441_OrderSizeandQuantity.Designer.cs">
+      <DependentUpon>201701271844441_OrderSizeandQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702092000003_AddActiveToSize.cs" />
+    <Compile Include="Migrations\201702092000003_AddActiveToSize.Designer.cs">
+      <DependentUpon>201702092000003_AddActiveToSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702101549478_AddActiveToQuantity.cs" />
+    <Compile Include="Migrations\201702101549478_AddActiveToQuantity.Designer.cs">
+      <DependentUpon>201702101549478_AddActiveToQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702132051463_AddDeliveryOptionsToDb.cs" />
+    <Compile Include="Migrations\201702132051463_AddDeliveryOptionsToDb.Designer.cs">
+      <DependentUpon>201702132051463_AddDeliveryOptionsToDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702132141036_AddDeliveryOptionsToOrder.cs" />
+    <Compile Include="Migrations\201702132141036_AddDeliveryOptionsToOrder.Designer.cs">
+      <DependentUpon>201702132141036_AddDeliveryOptionsToOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702161511007_AddUpsizeChargeToShirt.cs" />
+    <Compile Include="Migrations\201702161511007_AddUpsizeChargeToShirt.Designer.cs">
+      <DependentUpon>201702161511007_AddUpsizeChargeToShirt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702161555369_CreateMarkupTable.cs" />
+    <Compile Include="Migrations\201702161555369_CreateMarkupTable.Designer.cs">
+      <DependentUpon>201702161555369_CreateMarkupTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704191705417_AddRequestedFieldsToUserTable.cs" />
+    <Compile Include="Migrations\201704191705417_AddRequestedFieldsToUserTable.Designer.cs">
+      <DependentUpon>201704191705417_AddRequestedFieldsToUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704231934300_AddCustomerInfoToOrdersTable.cs" />
+    <Compile Include="Migrations\201704231934300_AddCustomerInfoToOrdersTable.Designer.cs">
+      <DependentUpon>201704231934300_AddCustomerInfoToOrdersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704231951257_AddEmailToOrders.cs" />
+    <Compile Include="Migrations\201704231951257_AddEmailToOrders.Designer.cs">
+      <DependentUpon>201704231951257_AddEmailToOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231438003_AddFileAndShirtIdToOrders.cs" />
+    <Compile Include="Migrations\201708231438003_AddFileAndShirtIdToOrders.Designer.cs">
+      <DependentUpon>201708231438003_AddFileAndShirtIdToOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708231738350_ShirtToSize.cs" />
+    <Compile Include="Migrations\201708231738350_ShirtToSize.Designer.cs">
+      <DependentUpon>201708231738350_ShirtToSize.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708241338435_ShirtToSizeSelected.cs" />
+    <Compile Include="Migrations\201708241338435_ShirtToSizeSelected.Designer.cs">
+      <DependentUpon>201708241338435_ShirtToSizeSelected.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708241547081_Testing.cs" />
+    <Compile Include="Migrations\201708241547081_Testing.Designer.cs">
+      <DependentUpon>201708241547081_Testing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708241601458_Testing2.cs" />
+    <Compile Include="Migrations\201708241601458_Testing2.Designer.cs">
+      <DependentUpon>201708241601458_Testing2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708251630166_ShirtsToSizes.cs" />
+    <Compile Include="Migrations\201708251630166_ShirtsToSizes.Designer.cs">
+      <DependentUpon>201708251630166_ShirtsToSizes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708251921137_ShirtToSizeRemoveId.cs" />
+    <Compile Include="Migrations\201708251921137_ShirtToSizeRemoveId.Designer.cs">
+      <DependentUpon>201708251921137_ShirtToSizeRemoveId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708292154337_DropUserLogFK.cs" />
+    <Compile Include="Migrations\201708292154337_DropUserLogFK.Designer.cs">
+      <DependentUpon>201708292154337_DropUserLogFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708292218481_DropOrdersFK.cs" />
+    <Compile Include="Migrations\201708292218481_DropOrdersFK.Designer.cs">
+      <DependentUpon>201708292218481_DropOrdersFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708292230133_DropOrdersFK2.cs" />
+    <Compile Include="Migrations\201708292230133_DropOrdersFK2.Designer.cs">
+      <DependentUpon>201708292230133_DropOrdersFK2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\DeliveryOption.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\FileType.cs" />
+    <Compile Include="Models\LogUserInfo.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Markup.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Shirt.cs" />
+    <Compile Include="Models\ShirtQuantity.cs" />
+    <Compile Include="Models\ShirtSize.cs" />
+    <Compile Include="Models\ShirtToSize.cs" />
+    <Compile Include="Models\UserLog.cs" />
+    <Compile Include="MyClasses\GmailEmailService.cs" />
+    <Compile Include="MyClasses\ReCaptcha.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CartShirtViewModel.cs" />
+    <Compile Include="ViewModels\OrdersExportViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\ShirtCriteriaViewModel.cs" />
+    <Compile Include="ViewModels\ShirtOrdersViewModel.cs" />
+    <Compile Include="ViewModels\ShirtsToSizesViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap2.min.css" />
+    <Content Include="Content\img\btpie.png" />
+    <Content Include="Content\img\cd-cart.svg" />
+    <Content Include="Content\img\cd-hamburger-menu.svg" />
+    <Content Include="Content\img\cd-icon-close.svg" />
+    <Content Include="Content\img\cd-icon-email.svg" />
+    <Content Include="Content\img\cd-icon-menu.svg" />
+    <Content Include="Content\img\cd-icon-password.svg" />
+    <Content Include="Content\img\cd-icon-username.svg" />
+    <Content Include="Content\img\cd-logo.svg" />
+    <Content Include="Content\img\cd-remove-item.svg" />
+    <Content Include="Content\img\fakebundle.jpg" />
+    <Content Include="Content\img\fleece.jpg" />
+    <Content Include="Content\img\herobg.jpg" />
+    <Content Include="Content\img\Long Sleeve.jpg" />
+    <Content Include="Content\img\mytb.png" />
+    <Content Include="Content\img\Short Sleeve.jpg" />
+    <Content Include="Content\img\teebg.jpg" />
+    <Content Include="Content\img\thumb.jpg" />
+    <Content Include="Content\img\unitedlogo.png" />
+    <Content Include="Content\img\uwlogo.jpg" />
+    <Content Include="Content\img\worn_dots.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\preload-angle-theme.css" />
+    <Content Include="Content\tabs\bootstrap-formhelpers.min.css" />
+    <Content Include="Content\tabs\bootstrap-formhelpers.min.js" />
+    <Content Include="Content\tabs\component.css" />
+    <Content Include="Content\ucontent\bootstrap.min.css" />
+    <Content Include="Content\ucontent\reset.css" />
+    <Content Include="Content\ucontent\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\uscripts\cbpFWTabs.js" />
+    <Content Include="Scripts\uscripts\main2.js" />
+    <Content Include="Scripts\pace.js" />
+    <Content Include="Scripts\uscripts\threetab.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
+    <Content Include="Views\Role\Edit.cshtml" />
+    <Content Include="Views\Role\GetRoles.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Role\ManageUserRoles.cshtml" />
+    <Content Include="Views\Role\RoleAddToUser.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\LogUserInfoes\Create.cshtml" />
+    <Content Include="Views\LogUserInfoes\Delete.cshtml" />
+    <Content Include="Views\LogUserInfoes\Details.cshtml" />
+    <Content Include="Views\LogUserInfoes\Edit.cshtml" />
+    <Content Include="Views\LogUserInfoes\Index.cshtml" />
+    <Content Include="Views\Account\UserLogin.cshtml" />
+    <Content Include="Views\Shared\_CLoginLayout.cshtml" />
+    <Content Include="Views\ShirtSizes\Create.cshtml" />
+    <Content Include="Views\ShirtSizes\Delete.cshtml" />
+    <Content Include="Views\ShirtSizes\Details.cshtml" />
+    <Content Include="Views\ShirtSizes\Edit.cshtml" />
+    <Content Include="Views\ShirtSizes\Index.cshtml" />
+    <Content Include="Views\Shirts\Create.cshtml" />
+    <Content Include="Views\Shirts\Delete.cshtml" />
+    <Content Include="Views\Shirts\Details.cshtml" />
+    <Content Include="Views\Shirts\Edit.cshtml" />
+    <Content Include="Views\Shirts\ShirtList.cshtml" />
+    <Content Include="Views\Shared\_CLayout.cshtml" />
+    <Content Include="Views\ShirtQuantities\Create.cshtml" />
+    <Content Include="Views\ShirtQuantities\Delete.cshtml" />
+    <Content Include="Views\ShirtQuantities\Details.cshtml" />
+    <Content Include="Views\ShirtQuantities\Edit.cshtml" />
+    <Content Include="Views\ShirtQuantities\Index.cshtml" />
+    <Content Include="Views\Shared\_CLoginPartial.cshtml" />
+    <Content Include="Views\Shared\_CartPartial.cshtml" />
+    <Content Include="Views\Shared\_C2Layout.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Cart.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Shared\_ItemsCartPartial.cshtml" />
+    <Content Include="Views\Orders\Purchased.cshtml" />
+    <Content Include="Views\Orders\Checkout.cshtml" />
+    <Content Include="Views\DeliveryOptions\Create.cshtml" />
+    <Content Include="Views\DeliveryOptions\Delete.cshtml" />
+    <Content Include="Views\DeliveryOptions\Details.cshtml" />
+    <Content Include="Views\DeliveryOptions\Edit.cshtml" />
+    <Content Include="Views\DeliveryOptions\Index.cshtml" />
+    <Content Include="Views\Markups\Create.cshtml" />
+    <Content Include="Views\Markups\Delete.cshtml" />
+    <Content Include="Views\Markups\Details.cshtml" />
+    <Content Include="Views\Markups\Edit.cshtml" />
+    <Content Include="Views\Markups\Index.cshtml" />
+    <Content Include="Views\Orders\NoShirts.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Account\FindMe.cshtml" />
+    <Content Include="Views\ManageOrders\Create.cshtml" />
+    <Content Include="Views\ManageOrders\Delete.cshtml" />
+    <Content Include="Views\ManageOrders\Details.cshtml" />
+    <Content Include="Views\ManageOrders\Edit.cshtml" />
+    <Content Include="Views\ManageOrders\Index.cshtml" />
+    <Content Include="Views\ManageOrders\Find.cshtml" />
+    <Content Include="Views\Shared\PagedPartial1.cshtml" />
+    <Content Include="Views\Shared\AuthorizeFailed.cshtml" />
+    <Content Include="Views\Shared\PagedPartial.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\Shirts\Index.cshtml" />
+    <Content Include="Views\ShirtToSizes\Create.cshtml" />
+    <Content Include="Views\ShirtToSizes\Delete.cshtml" />
+    <Content Include="Views\ShirtToSizes\Details.cshtml" />
+    <Content Include="Views\ShirtToSizes\Edit.cshtml" />
+    <Content Include="Views\ShirtToSizes\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ShirtSize.cshtml" />
+    <Content Include="Views\Account\Purchased.cshtml" />
+    <Content Include="Views\User\Duplicates.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\File\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612012139286_InitialMigration.resx">
+      <DependentUpon>201612012139286_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612081604530_LogUserInfo.resx">
+      <DependentUpon>201612081604530_LogUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612081614540_LogUserInfo1.resx">
+      <DependentUpon>201612081614540_LogUserInfo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701101735404_ShirtSize.resx">
+      <DependentUpon>201701101735404_ShirtSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701101924086_Shirts.resx">
+      <DependentUpon>201701101924086_Shirts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701101926051_Files.resx">
+      <DependentUpon>201701101926051_Files.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161425522_ShirtQuantity.resx">
+      <DependentUpon>201701161425522_ShirtQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701161430008_ChangeShirtQuantityToInt.resx">
+      <DependentUpon>201701161430008_ChangeShirtQuantityToInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701171605323_AddOrdersModel.resx">
+      <DependentUpon>201701171605323_AddOrdersModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701192308404_AddEmpId.resx">
+      <DependentUpon>201701192308404_AddEmpId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701231519018_ChangeOrderClass.resx">
+      <DependentUpon>201701231519018_ChangeOrderClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701250302447_UserLog.resx">
+      <DependentUpon>201701250302447_UserLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701271844441_OrderSizeandQuantity.resx">
+      <DependentUpon>201701271844441_OrderSizeandQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702092000003_AddActiveToSize.resx">
+      <DependentUpon>201702092000003_AddActiveToSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702101549478_AddActiveToQuantity.resx">
+      <DependentUpon>201702101549478_AddActiveToQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702132051463_AddDeliveryOptionsToDb.resx">
+      <DependentUpon>201702132051463_AddDeliveryOptionsToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702132141036_AddDeliveryOptionsToOrder.resx">
+      <DependentUpon>201702132141036_AddDeliveryOptionsToOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702161511007_AddUpsizeChargeToShirt.resx">
+      <DependentUpon>201702161511007_AddUpsizeChargeToShirt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702161555369_CreateMarkupTable.resx">
+      <DependentUpon>201702161555369_CreateMarkupTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704191705417_AddRequestedFieldsToUserTable.resx">
+      <DependentUpon>201704191705417_AddRequestedFieldsToUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704231934300_AddCustomerInfoToOrdersTable.resx">
+      <DependentUpon>201704231934300_AddCustomerInfoToOrdersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704231951257_AddEmailToOrders.resx">
+      <DependentUpon>201704231951257_AddEmailToOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231438003_AddFileAndShirtIdToOrders.resx">
+      <DependentUpon>201708231438003_AddFileAndShirtIdToOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708231738350_ShirtToSize.resx">
+      <DependentUpon>201708231738350_ShirtToSize.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708241338435_ShirtToSizeSelected.resx">
+      <DependentUpon>201708241338435_ShirtToSizeSelected.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708241547081_Testing.resx">
+      <DependentUpon>201708241547081_Testing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708241601458_Testing2.resx">
+      <DependentUpon>201708241601458_Testing2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708251630166_ShirtsToSizes.resx">
+      <DependentUpon>201708251630166_ShirtsToSizes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708251921137_ShirtToSizeRemoveId.resx">
+      <DependentUpon>201708251921137_ShirtToSizeRemoveId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708292154337_DropUserLogFK.resx">
+      <DependentUpon>201708292154337_DropUserLogFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708292218481_DropOrdersFK.resx">
+      <DependentUpon>201708292218481_DropOrdersFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708292230133_DropOrdersFK2.resx">
+      <DependentUpon>201708292230133_DropOrdersFK2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51798</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51798/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

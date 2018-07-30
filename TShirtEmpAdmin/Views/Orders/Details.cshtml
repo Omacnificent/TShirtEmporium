@@ -1,0 +1,66 @@
+﻿@model TShirtEmpAdmin.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ShirtCause)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShirtCause)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShirtYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShirtYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderCompleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderCompleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecievedShirt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecievedShirt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

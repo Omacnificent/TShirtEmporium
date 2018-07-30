@@ -1,0 +1,101 @@
+﻿@model IEnumerable<TShirtEmpAdmin.Models.Order>
+
+@{
+    ViewBag.Title = "Index"; 
+}
+
+    @if (ViewBag.Count < 1)
+    {
+        <h3>
+            @Html.ActionLink("<< Back to List", "Index")<br /><br />
+        </h3>
+    }
+    else
+    {
+        <h3>
+            @Html.ActionLink("<< Back to List", "Index")<br /><br />
+            Employee ID: @ViewBag.EmpID<br />
+            Name: @ViewBag.Name<br />
+            Total: $@ViewBag.Total
+        </h3>
+    }
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShirtCause)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OShirtSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OShirtQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ODeliveryOption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderCompleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecievedShirt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShirtCause)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OShirtSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OShirtQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ODeliveryOption)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderCompleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecievedShirt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id, odn = ViewBag.Order }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Complete Order", "ToggleCompleted", new { id = item.Id }) |
+            @Html.ActionLink("Shirt Delivered", "ToggleRecieved", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id})
+        </td>
+    </tr>
+}
+    @if (ViewBag.Count < 1)
+    {
+        <h3>@ViewBag.Message</h3>
+    }
+</table>
+
